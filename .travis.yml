@@ -26,5 +26,19 @@ before_install:
   - 'if [ "$NPM_3" = true ]; then npm install -g npm@3; else true; fi'
 
 script:
+  # Check archetype.
   - npm --version
   - npm run builder:check
+
+  # Initialize a fresh project from templates
+  - npm install -g builder-init
+  - mkdir .builder-init-tmp
+  - cd .builder-init-tmp
+  - >-
+    builder-init $PWD/.. --prompts='{
+    "packageName":"victory-test",
+    "packageGitHubOrg":"Cool Org",
+    "packageDescription":"Test Victory Component",
+    "licenseDate":"2016",
+    "licenseOrg":"Cool Org",
+    "destination":"victory-test"}'
