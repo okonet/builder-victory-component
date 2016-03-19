@@ -51,8 +51,10 @@
     "check-ci": "builder run lint && builder run test-ci",
     "check-cov": "builder run lint && builder run test-cov",
     "check-dev": "builder run lint && builder run test-dev",
+    "builder:lint": "npm run builder:lint-config && npm run builder:lint-init-source && npm run builder:lint-init-test",
     "builder:lint-config": "eslint --color config",
-    "builder:lint": "npm run builder:lint-config",
+    "builder:lint-init-source": "eslint --color --ext *.js,*.jsx init/src init/demo",
+    "builder:lint-init-test": "eslint --color --ext *.js,*.jsx init/test",
     "builder:check": "npm run builder:lint"
   },
   "dependencies": {
@@ -70,9 +72,11 @@
     "webpack": "^1.12.9"
   },
   "devDependencies": {
+    "babel-eslint": "^5.0.0",
     "builder-support": "^0.3.0",
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
-    "eslint-plugin-filenames": "^0.1.2"
+    "eslint-plugin-filenames": "^0.1.2",
+    "eslint-plugin-react": "^4.2.3"
   }
 }
