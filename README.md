@@ -3,7 +3,8 @@
 Builder Archetype: Victory Component
 ==================================
 
-A Victory component archetype for [builder][].
+A Victory component archetype for [builder][]. See the [development guide][]
+for workflows in components using this archetype.
 
 ## Installation
 
@@ -14,6 +15,20 @@ and the development module:
 $ npm install --save builder-victory-component
 $ npm install --save-dev builder-victory-component-dev
 ```
+
+## Generator
+
+To bootstrap a new project from scratch with template files from this
+archetype, you can use [builder-init][]:
+
+```sh
+$ npm install -g builder-init
+$ builder-init builder-victory-component
+```
+
+This will download this archetype, prompt you for several template data values
+and inflate the [archetype templates][] to real files at a chosen directory.
+
 
 ## Project Structure
 
@@ -51,33 +66,35 @@ This archetype assumes an architecture as follows:
         └── test.html
 ```
 
+
+An example project using this structure is [victory-chart][].
+
+## Component Name Inference
+
 The `name` field in `package.json` (the published `npm` package name) is
 assumed to be:
 
 1. The desired file name of the distribution files and dash-cased.
-2. The desired default exported class name when converted to PascalCase.
+2. The desired default exported class name when converted to CapitalCamelCase.
 
 So, if a `package.json` has:
 
 ```js
 {
-  "name": "my-cool-component"
+  "name": "victory-heatmap"
 }
 ```
 
 The distribution files to output are:
 
 ```
-dist/my-cool-component.js
-dist/my-cool-component.js.map
-dist/my-cool-component.min.js
-dist/my-cool-component.min.js.map
+dist/victory-heatmap.js
+dist/victory-heatmap.js.map
+dist/victory-heatmap.min.js
+dist/victory-heatmap.min.js.map
 ```
 
-and the exported class name is `MyCoolComponent`.
-
-An example project using this structure is:
-[formidable-react-component-boilerplate][]
+and the exported class name is `VictoryHeatmap`.
 
 ## Usage Notes
 
@@ -103,12 +120,19 @@ using `builder-init builder-victory-component`:
 
 ### Babel Configuration
 
-This archetype does not currently specify its own `.babelrc`. Your project
-should specify its own in the root directory if you want non-default Babel
-settings (like using stage 0, for instance). See [the recommended
-settings](config/babel/.babelrc).
+This archetype contains a `config/babel/.babelrc` meant for your project to extend
+by putting this in your project root `.babelrc`:
 
-### peerDependencies
+```
+{
+  "extends": "./node_modules/builder-victory-component/config/babel/.babelrc"
+}
+```
+
+If you want to override some options, you can do so by adding custom configuration
+values to your `.babelrc`. See [http://babeljs.io/docs/usage/options/][].
+
+### `peerDependencies`
 
 This archetype is meant to be used in a very specific context: A Victory component. As such, it's assumed that the implementing component bring along these dependencies:
 - `react` & `react-dom 0.14+`
@@ -256,7 +280,11 @@ Tasks:
     [builder-victory-component] karma start node_modules/builder-victory-component/config/karma/karma.conf.dev.js
 ```
 
+[archetype templates]: ./init
+[http://babeljs.io/docs/usage/options/]: http://babeljs.io/docs/usage/options/
 [builder]: https://github.com/FormidableLabs/builder
-[formidable-react-component-boilerplate]: https://github.com/FormidableLabs/formidable-react-component-boilerplate
+[builder-init]: https://github.com/FormidableLabs/builder-init
+[development guide]: ./dev/DEVELOPMENT.md
+[victory-chart]: https://github.com/FormidableLabs/victory-chart
 [trav_img]: https://api.travis-ci.org/FormidableLabs/builder-victory-component.svg
 [trav_site]: https://travis-ci.org/FormidableLabs/builder-victory-component
