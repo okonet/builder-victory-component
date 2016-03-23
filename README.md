@@ -100,10 +100,10 @@ and the exported class name is `VictoryHeatmap`.
 
 ### Eslint
 
-The implementing project will need to add an `.eslintrc` file in the root
-which should extend the archetype eslint configuration. Another `.eslintrc` file
-should be placed in the `test/` directory, extending the test eslint configuration.
-The presence of these files ensures support for most editor and IDE lint plugins.
+The implementing project needs an `.eslintrc` file in the root which should extend the archetype
+eslint configuration. Two more `.eslintrc` files should be placed in the `test/` and `docs/`
+directories, extending the appropriate eslint configurations. The presence of these files ensures
+support for most editor and IDE lint plugins.
 
 These files will be added automatically when generating a new Victory component
 using `builder-init builder-victory-component`:
@@ -114,8 +114,13 @@ using `builder-init builder-victory-component`:
 ```
 
 ```yaml
+--- # <ROOT>/docs/.eslintrc
+  extends: ../node_modules/builder-victory-component/config/eslint/.eslintrc-docs
+```
+
+```yaml
 --- # <ROOT>/test/.eslintrc
-  extends: ../node_modules/builder-victory-component/config/eslint/.eslintrc-test
+extends: ../node_modules/builder-victory-component/config/eslint/.eslintrc-test
 ```
 
 ### Babel Configuration
