@@ -1,5 +1,4 @@
 <% if (packageGitHubOrg) { %>[![Travis Status][travis_badge]][travis_site]
-<% if (packageGitHubOrg) { %>[![Travis Status][travis_badge]][travis_site]
 
 ![Library gzip Size](https://badge-size.herokuapp.com/FormidableLabs/victory-pie/master/dist/victory-pie.js.svg?compression=gzip)
 
