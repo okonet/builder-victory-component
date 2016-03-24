@@ -1,4 +1,4 @@
-VictoryComponentBoilerplate
+<%= componentName %>
 ===========================
 
 <Add high level description here>
@@ -7,35 +7,35 @@ VictoryComponentBoilerplate
 
 ### Props are optional
 
-VictoryComponentBoilerplate is written to be highly configurable, but it also includes a set of sensible defaults and fallbacks. If no props are provided, VictoryComponentBoilerplate <add description of default behavior here>.
+<%= componentName %> is written to be highly configurable, but it also includes a set of sensible defaults and fallbacks. If no props are provided, <%= componentName %> <add description of default behavior here>.
 
 ```playground
-<VictoryComponentBoilerplate />
+<<%= componentName %> />
 ```
 
 To display your own data, just pass in <describe data requirements>.
 
 ```playground
- <VictoryComponentBoilerplate
+ <<%= componentName %>
     data={[]}
  />
 ```
 
 ### Flexible and configurable
 
-The sensible defaults VictoryComponentBoilerplate provides makes it easy to get started, but everything can be overridden, and configured to suit your needs:
+The sensible defaults <%= componentName %> provides makes it easy to get started, but everything can be overridden, and configured to suit your needs:
 
 Add labels, style the data, <etc, etc.>::
 
 ```playground
-<VictoryComponentBoilerplate
+<<%= componentName %>
 
  />
 ```
 
 ### Animating
 
-VictoryComponentBoilerplate animates with [VictoryAnimation](http://github.com/formidablelabs/victory-animation) as data changes when an `animate` prop is provided.
+<%= componentName %> animates with [VictoryAnimation](http://github.com/formidablelabs/victory-animation) as data changes when an `animate` prop is provided.
 
 ```playground_norender
 class App extends React.Component {
@@ -67,7 +67,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <VictoryComponentBoilerplate
+      <<%= componentName %>
         style={{data: this.state.style}}
         animate={{velocity: 0.02}}
       />

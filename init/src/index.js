@@ -1,4 +1,5 @@
-module.exports = {
-  VictoryComponentBoilerplate:
-    require("./components/victory-component-boilerplate")
+import <%= componentName %> from "./components/<%= packageName %>";
+
+export {
+  <%= componentName %>
 };

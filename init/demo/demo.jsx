@@ -1,11 +1,11 @@
 import React from "react";
-import {VictoryComponentBoilerplate} from "../src/index";
+import {<%= componentName %>} from "../src/index";
 
 class Demo extends React.Component {
   render() {
     return (
       <div className="demo">
-        <VictoryComponentBoilerplate />
+        <<%= componentName %> />
       </div>
     );
   }

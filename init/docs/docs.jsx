@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import ReactDOM from "react-dom";
 import Ecology from "ecology";
@@ -5,15 +6,16 @@ import Radium, { Style } from "radium";
 import * as docgen from "react-docgen";
 
 import { VictoryTheme } from "formidable-landers";
-@Radium
+import <%= componentName %> from "../src/components/<%= packageName %>";
+
 class Docs extends React.Component {
   render() {
     return (
       <div>
         <Ecology
           overview={require("!!raw!./ecology.md")}
-          source={docgen.parse(require("!!raw!../src/components/victory-component-boilerplate"))}
-          scope={{React, ReactDOM, VictoryComponentBoilerplate: require("../src/components/victory-component-boilerplate")}}
+          source={docgen.parse(require("!!raw!../src/components/<%= packageName %>"))}
+          scope={{React, ReactDOM, <%= componentName %>}}
           playgroundtheme="elegant" />
         <Style rules={VictoryTheme}/>
       </div>
@@ -21,4 +23,4 @@ class Docs extends React.Component {
   }
 }
 
-export default Docs;
+export default Radium(Docs);
