@@ -51,10 +51,11 @@
     "check-ci": "builder run lint && builder run test-ci",
     "check-cov": "builder run lint && builder run test-cov",
     "check-dev": "builder run lint && builder run test-dev",
-    "builder:lint": "npm run builder:lint-config && npm run builder:lint-init-source && npm run builder:lint-init-test",
+    "builder:lint": "builder concurrent builder:lint-config builder:lint-init-source builder:lint-init-docs builder:lint-init-test",
     "builder:lint-config": "eslint --color config",
-    "builder:lint-init-source": "eslint --color --ext *.js,*.jsx init/src init/demo",
-    "builder:lint-init-test": "eslint --color --ext *.js,*.jsx init/test",
+    "builder:lint-init-source": "eslint --color --no-eslintrc --config ./config/eslint/.eslintrc-source --ext *.js,*.jsx init/src init/demo",
+    "builder:lint-init-docs": "eslint --color --no-eslintrc --config ./config/eslint/.eslintrc-docs --ext *.js,*.jsx init/docs",
+    "builder:lint-init-test": "eslint --color --no-eslintrc --config ./config/eslint/.eslintrc-test --ext *.js,*.jsx init/test",
     "builder:check": "npm run builder:lint"
   },
   "dependencies": {
@@ -73,6 +74,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0",
+    "builder": "^2.9.1",
     "builder-support": "^0.3.0",
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
